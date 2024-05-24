@@ -1,1 +1,54 @@
+mysql> create database anplab;
+Query OK, 1 row affected (0.67 sec)
+
+mysql> use anplab;
+Database changed
+mysql> create table customer(customer_id integer primary key,first_name varchar(50),Last_name varchar(50));
+Query OK, 0 rows affected (2.64 sec)
+
+mysql> create table Orders(order_id integer primary key,customer_id integer foreign key references customer(customer_id),order_date varchar(15),total_amount varchar);
+
+mysql> create table Orders(order_id integer primary key,customer_id integer,order_date varchar(15),total_amount varchar(50),FOREIGN KEY(customer_id) REFERENCES customer(customer_id));
+Query OK, 0 rows affected (1.28 sec)
+
+mysql> desc customer;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| customer_id | int         | NO   | PRI | NULL    |       |
+| first_name  | varchar(50) | YES  |     | NULL    |       |
+| Last_name   | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+mysql> insert into customer values(1,"Jaya","Mergu"),(2,"rohit","adam"),(3,"jimin","park"),(4,"jungkook","jeon"),(5,"teahyung","kim");
+Query OK, 5 rows affected (0.08 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> desc orders;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| order_id     | int         | NO   | PRI | NULL    |       |
+| customer_id  | int         | YES  | MUL | NULL    |       |
+| order_date   | varchar(15) | YES  |     | NULL    |       |
+| total_amount | varchar(50) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> insert into orders values(1,1,"12-04-2024","175.3"),(2,2,"11-04-2024","3251"),(3,3,"31-9-2023","67675.7"),(4,4,"5-6-2023","76587.0"),(5,5,"1-9-2009","53.67");
+Query OK, 5 rows affected (0.26 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select first_name,Last_name,order_date,total_amount from customer inner join orders on customer.customer_id=orders.customer_id;
++------------+-----------+------------+--------------+
+| first_name | Last_name | order_date | total_amount |
++------------+-----------+------------+--------------+
+| Jaya       | Mergu     | 12-04-2024 | 175.3        |
+| rohit      | adam      | 11-04-2024 | 3251         |
+| jimin      | park      | 31-9-2023  | 67675.7      |
+| jungkook   | jeon      | 5-6-2023   | 76587.0      |
+| teahyung   | kim       | 1-9-2009   | 53.67        |
++------------+-----------+------------+--------------+
+5 rows in set (0.00 sec)
 
