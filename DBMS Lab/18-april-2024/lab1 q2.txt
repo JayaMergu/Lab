@@ -1,0 +1,58 @@
+mysql> create table Department(department_id integer primary key,department_name varchar(50));
+Query OK, 0 rows affected (1.17 sec)
+
+mysql> create table Employee(empoyee_id integer primary key,first_name varchar(15),Last_name varchar(15),department_id integer, FOREIGN KEY(department_id) REFERENCES department(department_id));
+Query OK, 0 rows affected (1.64 sec)
+
+mysql> desc department;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| department_id   | int         | NO   | PRI | NULL    |       |
+| department_name | varchar(50) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+2 rows in set (0.10 sec)
+
+mysql> insert into department values(1,"cs"),(2,""),(3,"it"),(4,"cs"),(5,"entc");
+Query OK, 5 rows affected (0.22 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| empoyee_id    | int         | NO   | PRI | NULL    |       |
+| first_name    | varchar(15) | YES  |     | NULL    |       |
+| Last_name     | varchar(15) | YES  |     | NULL    |       |
+| department_id | int         | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into employee values(1,"jaya","mergu",1);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into employee values(2,"jk","kim",2);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employee values(3,"jungkook","jeon",3);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into employee values(4,"jimin","park",4);
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert into employee values(5,"rohit","park",5);
+Query OK, 1 row affected (0.10 sec)
+
+Mysql>SELECT department.department_id, department.department_name, employee.first_name, employee.Last_name
+    -> FROM department
+    -> LEFT JOIN employee ON department.department_id = employee.department_id;
++---------------+-----------------+------------+-----------+
+| department_id | department_name | first_name | Last_name |
++---------------+-----------------+------------+-----------+
+|             1 | cs              | jaya       | mergu     |
+|             2 |                 | jk         | kim       |
+|             3 | it              | jungkook   | jeon      |
+|             4 | cs              | jimin      | park      |
+|             5 | entc            | rohit      | park      |
++---------------+-----------------+------------+-----------+
+5 rows in set (0.00 sec)
