@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Project coordinates -->
+	<groupId>com.companyname</groupId><!-- Group or organization identifier -->
+	<artifactId>springbootcrudrest</artifactId><!-- Name of the project -->
+	<version>0.0.1-SNAPSHOT</version><!-- Version of the project -->
+	<packaging>jar</packaging><!-- Packaging type, here it's a JAR file -->
+
+	<!-- Project metadata -->
+	<name>springbootcrudrest</name><!-- Name of the project -->
+	<description>Demo project for Spring Boot</description><!-- Description of the project -->
+
+	<!-- Parent POM -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.4</version><!-- Spring Boot version managed by the parent -->
+		<relativePath/> <!-- lookup parent from repository --><!-- Path to the parent POM, not applicable here -->
+	</parent>
+
+	<!-- Project properties -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!-- Source file encoding -->
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding><!-- Output encoding for reports -->
+		<java.version>17</java.version><!-- Java version used for compilation -->
+	</properties>
+
+	<!-- Project dependencies -->
+	<dependencies>
+		<!-- Spring Boot Starter for Spring Data JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- Spring Boot Starter for Spring Web (RESTful services) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- Spring Boot Starter for Validation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<!-- Spring Boot DevTools for development-time support -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- MySQL Connector/J for connecting to MySQL database -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+	<!-- Spring Boot Starter for testing -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	
+	<!-- Build configuration -->
+	<build>
+		<plugins>
+			<!-- Maven plugin for packaging Spring Boot applications -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
